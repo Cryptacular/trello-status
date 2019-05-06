@@ -1,8 +1,9 @@
 function decorateCards() {
   const cards = $('.js-card-name').toArray();
-  cards
-    .filter(c => c.innerText.indexOf('//') > -1)
-    .forEach(c => {
+  cards.forEach(c => {
+    if (c.innerHTML.indexOf('//') > -1) {
+      const text = c.innerText;
+
       if (c.innerHTML.indexOf('fp-status') > -1) {
         return;
       }
@@ -15,8 +16,29 @@ function decorateCards() {
                     </span>
                   </span> `;
       }
+
       c.innerHTML = parts.join(' ');
-    });
+
+      const colour = parseColour(text);
+      if (c.parentElement && c.parentElement.parentElement) {
+        const parent = c.parentElement.parentElement;
+        if (colour !== null) {
+          $(parent).css('background-color', colour);
+          $(c)
+            .find('.fp-status')
+            .css('visibility', 'hidden')
+            .css('position', 'absolute');
+        }
+      }
+    } else if (c.innerHTML.length > 0) {
+      if (c.parentElement && c.parentElement.parentElement) {
+        const parent = c.parentElement.parentElement;
+        if (parent.style.backgroundColor.length > 0) {
+          $(parent).css('background-color', 'rgb(255, 255, 255)');
+        }
+      }
+    }
+  });
 }
 
 function addStyles() {
@@ -46,23 +68,29 @@ function addStyles() {
 }
 
 function decorateLists() {
-  const regex = new RegExp(
-    /((rgb\((\d+,\s*){2}\d+\))|(rgba\((\d+,\s*){3}\d+\))|(#\S{3,6}))$/
-  );
-
   const lists = $('.js-list-content').toArray();
   lists.forEach(list => {
     const $list = $(list);
     const $title = $list.find('.js-list-name-assist');
     const titleText = $title.text();
-    const matches = regex.exec(titleText);
 
-    if (matches !== null && matches.length > 0) {
-      $list.css('background-color', matches[0]);
-      const startOfColour = titleText.indexOf(matches[0]);
-      $title.text(titleText.substring(0, startOfColour));
-    }
+    const colour = parseColour(titleText);
+    colour && $list.css('background-color', colour);
   });
+}
+
+function parseColour(text) {
+  const regex = new RegExp(
+    /((rgb\((\d+,\s*){2}\d+\))|(rgba\((\d+,\s*){3}[\d.]+\))|(#\S{3,6}))\s*$/
+  );
+
+  const matches = regex.exec(text);
+
+  if (matches === null || matches.length === 0) {
+    return null;
+  }
+
+  return matches[0];
 }
 
 addStyles();
