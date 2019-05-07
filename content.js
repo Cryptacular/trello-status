@@ -94,8 +94,21 @@ function parseColour(text) {
 }
 
 addStyles();
-decorateCards();
-decorateLists();
 
-$('.js-list-content').bind('DOMSubtreeModified', decorateCards);
-$('.js-list-name-assist').bind('DOMSubtreeModified', decorateLists);
+const tryInitialiseCards = setInterval(() => {
+  const cards = $('.js-list-content');
+  if (cards && cards.length > 0) {
+    decorateCards();
+    cards.bind('DOMSubtreeModified', decorateCards);
+    clearInterval(tryInitialiseCards);
+  }
+}, 100);
+
+const tryInitialiseLists = setInterval(() => {
+  const lists = $('.js-list-name-assist');
+  if (lists && lists.length > 0) {
+    decorateLists();
+    lists.bind('DOMSubtreeModified', decorateLists);
+    clearInterval(tryInitialiseLists);
+  }
+}, 100);
