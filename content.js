@@ -1,3 +1,8 @@
+let defaults = {
+  listColour: null,
+  cardColour: null
+};
+
 const regex = {
   divider: new RegExp(/^-{3}.+-{3}$/),
   colour: new RegExp(
@@ -29,7 +34,8 @@ function addStyles() {
       margin-top: 10px;
     }
     
-    .fp-status:last-child {
+    .fp-statusContainer {
+      display: block;
       margin-bottom: 8px;
     }
 
@@ -88,7 +94,7 @@ function decorateLists() {
     const titleText = $title.text();
 
     const colour = parseColour(titleText);
-    colour && $list.css('background-color', colour);
+    $list.css('background-color', colour || defaults.listColour);
   });
 }
 
@@ -106,19 +112,33 @@ function decorateCard(c) {
                         ${parts[i].trim()}
                     </span>
                   </span> `;
+
+    if (i === 1) {
+      parts[i] = `<span class="fp-statusContainer">${parts[i]}`;
+    }
+    if (i === parts.length - 1) {
+      parts[i] += '</span>';
+    }
   }
 
-  c.innerHTML = parts.join(' ');
+  c.innerHTML = `<span class="fp-statusContainer">${parts.join(' ')}</span>`;
 
   const colour = parseColour(text);
   if (c.parentElement && c.parentElement.parentElement) {
     const parent = c.parentElement.parentElement;
     if (colour !== null) {
       $(parent).css('background-color', colour);
-      $(c)
+      const statusContainers = $(c)
         .find('.fp-status')
-        .css('visibility', 'hidden')
-        .css('position', 'absolute');
+        .toArray();
+
+      statusContainers.forEach(sc => {
+        if (sc.innerText.indexOf(colour) > -1) {
+          $(sc).css('display', 'none');
+        }
+      });
+    } else {
+      $(parent).css('background-color', defaults.cardColour);
     }
   }
 }
@@ -165,6 +185,7 @@ addStyles();
 const tryInitialiseCards = setInterval(() => {
   const cards = $('.js-list-content');
   if (cards && cards.length > 0) {
+    defaults.cardColour = $('.list-card').css('background-color');
     decorateCards();
     cards.bind('DOMSubtreeModified', decorateCards);
     clearInterval(tryInitialiseCards);
@@ -172,8 +193,9 @@ const tryInitialiseCards = setInterval(() => {
 }, 100);
 
 const tryInitialiseLists = setInterval(() => {
-  const lists = $('.js-list-name-assist');
+  const lists = $('.js-list-header');
   if (lists && lists.length > 0) {
+    defaults.listColour = $('.js-list-content').css('background-color');
     decorateLists();
     lists.bind('DOMSubtreeModified', decorateLists);
     clearInterval(tryInitialiseLists);
