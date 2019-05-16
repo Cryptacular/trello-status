@@ -26,22 +26,29 @@ function addStyles() {
 	<style type="text/css">
 		.fp-status {
 			display: flex;
-            margin-top: 4px;
-		}
+      margin-top: 10px;
+    }
+    
+    .fp-status:last-child {
+      margin-bottom: 8px;
+    }
 
 		.fp-status-slash,
 		.fp-status-content {
-			padding: 2px 8px;
+      box-shadow: 0 4px #ccc;
+			padding: 5px 10px;
 		}
 
 		.fp-status-slash {
-			background: #000;
-			color: #fff;
+      background: #ddd;
+      color: #000;
+      border-radius: 5px 0 0 5px;
     }
 
 		.fp-status-content {
-			background: #333;
-			color: #eee;
+      background: #ececec;
+      border-radius: 0 5px 5px 0;
+      color: #333;
     }
 
     .fp-divider {
@@ -63,6 +70,11 @@ function addStyles() {
 
     .fp-divider-dashed--right {
       margin-left: 10px;
+    }
+
+    .fp-dividerParent {
+      background-color: transparent;
+      box-shadow: none;
     }
 	</style>
 `);
@@ -125,7 +137,7 @@ function decorateDivider(element) {
 
   if (element.parentElement && element.parentElement.parentElement) {
     const parent = element.parentElement.parentElement;
-    $(parent).css('background-color', 'rgba(0, 0, 0, 0.1)');
+    $(parent).addClass('fp-dividerParent');
   }
 }
 
