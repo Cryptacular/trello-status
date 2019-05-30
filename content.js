@@ -1,8 +1,3 @@
-let defaults = {
-  listColour: null,
-  cardColour: null
-};
-
 const regex = {
   divider: new RegExp(/^-{3}.+-{3}$/),
   colour: new RegExp(
@@ -94,7 +89,7 @@ function decorateLists() {
     const titleText = $title.text();
 
     const colour = parseColour(titleText);
-    $list.css('background-color', colour || defaults.listColour);
+    $list.css('background-color', colour || '');
   });
 }
 
@@ -138,7 +133,7 @@ function decorateCard(c) {
         }
       });
     } else {
-      $(parent).css('background-color', defaults.cardColour);
+      $(parent).css('background-color', '');
     }
   }
 }
@@ -185,7 +180,6 @@ addStyles();
 const tryInitialiseCards = setInterval(() => {
   const cards = $('.js-list-content');
   if (cards && cards.length > 0) {
-    defaults.cardColour = $('.list-card').css('background-color');
     decorateCards();
     cards.bind('DOMSubtreeModified', decorateCards);
     clearInterval(tryInitialiseCards);
@@ -195,7 +189,6 @@ const tryInitialiseCards = setInterval(() => {
 const tryInitialiseLists = setInterval(() => {
   const lists = $('.js-list-header');
   if (lists && lists.length > 0) {
-    defaults.listColour = $('.js-list-content').css('background-color');
     decorateLists();
     lists.bind('DOMSubtreeModified', decorateLists);
     clearInterval(tryInitialiseLists);
