@@ -14,5 +14,5 @@
       "matches": ["https://trello.com/b/*"]
     }
   ],
-  "permissions": []
+  "permissions": ["storage"]
 }
