@@ -149,7 +149,8 @@
           border-color: #717171
       }
 
-      .fp-darkMode .fp-dividerParent {
+      .fp-darkMode .fp-dividerParent, 
+      .fp-darkMode .fp-dividerParent .list-card-details {
           background: transparent
       }
 
@@ -185,6 +186,48 @@
       
       .fp-darkMode .icon-sm.dark-hover:hover {
           color: #adacac;
+      }
+
+      .fp-darkMode .window {
+          background-color: #444;
+      }
+      
+      .fp-darkMode .window, 
+      .fp-darkMode .window *, 
+      .fp-darkMode .window .icon-sm {
+          color: #adacac;
+      }
+      
+      .fp-darkMode .window .button,
+      .fp-darkMode .window .button-link {
+          background: #333;
+      }
+      
+      .fp-darkMode .checklist-item-checkbox {
+          background: #333;
+          border-color: #111;
+          box-shadow: none;
+      }
+      
+      .fp-darkMode .checklist-item-checkbox:hover,
+      .fp-darkMode .checklist-item-state-complete .checklist-item-checkbox.enabled:hover .checklist-item-checkbox-check {
+          background: #111;
+          color: #adacac;
+      }
+      
+      .fp-darkMode .window .button:hover,
+      .fp-darkMode .window .button-link:hover {
+          background: #111;
+      }
+      
+      .fp-darkMode .window-module-title h3,
+      .fp-darkMode .mod-card-back-title,
+      .fp-darkMode .label-text {
+          color: #fff;
+      }
+      
+      .fp-darkMode .action-comment {
+          background-color: #333;
       }
     </style>
   `);
