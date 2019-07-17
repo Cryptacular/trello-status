@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Trello Status Check",
-  "version": "0.2.0",
-  "description": "Display status updates in card titles in the format of `// <status update>`",
+  "version": "0.2.1",
+  "description": "Adds handy formatting tools for statuses and dividers, as well as an optional Dark Mode.",
   "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
   "browser_action": {
     "name": "Trello Status Check",
