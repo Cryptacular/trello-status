@@ -104,7 +104,7 @@
       }
 
       .fp-darkMode .list-card {
-          background: #111;
+          background: #444;
       }
 
       .fp-darkMode .list-card:hover {
@@ -114,7 +114,6 @@
       .fp-darkMode .list-card-details,
       .fp-darkMode .list-card-details:focus,
       .fp-darkMode .list-card-details:hover {
-          background: #444;
           color: #adacac;
       }
 
