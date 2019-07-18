@@ -245,6 +245,9 @@
       toggleDarkMode(isDarkModeEnabled);
       chrome.storage.local.set({ isDarkModeEnabled: isDarkModeEnabled });
     });
+
+    // Unhide plugin buttons container if required
+    $(".board-header-plugin-btns.hide").removeClass("hide");
   }
 
   function decorateLists() {
