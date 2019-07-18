@@ -98,7 +98,15 @@
 
   function addDarkModeStyles() {
     $("head").append(`
-	  <style type="text/css" id="fp-style-darkmode">
+    <style type="text/css" id="fp-style-darkmode">
+      .list, 
+      .list-card,
+      .fp-status-slash,
+      .fp-status-content {
+          transition: background-color 0.3s ease-out,
+                      box-shadow 0.3s ease-out;
+      }
+
       .fp-darkMode .list {
           background: #333;
       }
@@ -225,8 +233,13 @@
           color: #fff;
       }
       
-      .fp-darkMode .action-comment {
+      .fp-darkMode .action-comment,
+      .fp-darkMode .attachment-thumbnail-preview {
           background-color: #333;
+      }
+
+      .fp-darkMode .attachment-thumbnail:hover .attachment-thumbnail-details {
+          background: #555;
       }
     </style>
   `);
