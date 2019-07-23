@@ -30,62 +30,206 @@
 
   function addStyles() {
     $("head").append(`
-	<style type="text/css">
-		.fp-status {
-			display: flex;
-      margin-top: 10px;
-    }
-    
-    .fp-statusContainer {
-      display: block;
-      margin-bottom: 8px;
-    }
+    <style type="text/css">
+      .fp-status {
+        display: flex;
+        margin-top: 10px;
+      }
+      
+      .fp-statusContainer {
+        display: block;
+        margin-bottom: 8px;
+      }
 
-		.fp-status-slash,
-		.fp-status-content {
-      box-shadow: 0 4px #bdc1cb;
-			padding: 5px 10px;
-		}
+      .fp-status-slash,
+      .fp-status-content {
+        box-shadow: 0 4px #bdc1cb;
+        padding: 5px 10px;
+      }
 
-		.fp-status-slash {
-      background: #dfe1e6;
-      color: #000;
-      border-radius: 5px 0 0 5px;
-    }
+      .fp-status-slash {
+        background: #dfe1e6;
+        color: #000;
+        border-radius: 5px 0 0 5px;
+      }
 
-		.fp-status-content {
-      background: #eeeff2;
-      border-radius: 0 5px 5px 0;
-      color: #333;
-    }
+      .fp-status-content {
+        background: #eeeff2;
+        border-radius: 0 5px 5px 0;
+        color: #333;
+      }
 
-    .fp-divider {
-      color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      font-style: italic;
-    }
+      .fp-divider {
+        color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        font-style: italic;
+      }
 
-    .fp-divider-dashed {
-      flex: 1;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-      top: -9px;
-      position: relative;
-    }
+      .fp-divider-dashed {
+        flex: 1;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        top: -9px;
+        position: relative;
+      }
 
-    .fp-divider-dashed--left {
-      margin-right: 10px;
-    }
+      .fp-divider-dashed--left {
+        margin-right: 10px;
+      }
 
-    .fp-divider-dashed--right {
-      margin-left: 10px;
-    }
+      .fp-divider-dashed--right {
+        margin-left: 10px;
+      }
 
-    .fp-dividerParent {
-      background-color: transparent;
-      box-shadow: none;
-    }
-	</style>
-`);
+      .fp-dividerParent {
+        background-color: transparent;
+        box-shadow: none;
+      }
+
+      /* Dark Mode */
+      .list, 
+        .list-card,
+        .fp-status-slash,
+        .fp-status-content {
+            transition: background-color 0.3s ease-out,
+                        box-shadow 0.3s ease-out;
+        }
+
+        .fp-darkMode .list {
+            background: #333;
+        }
+
+        .fp-darkMode .list-card {
+            background: #444;
+        }
+
+        .fp-darkMode .list-card:hover {
+            background: #444;
+        }
+
+        .fp-darkMode .list-card-details,
+        .fp-darkMode .list-card-details:focus,
+        .fp-darkMode .list-card-details:hover {
+            color: #adacac;
+        }
+
+
+        .fp-darkMode .list-card-edit-title,
+        .fp-darkMode .list-card-edit-title:focus,
+        .fp-darkMode .list-card-edit-title:hover {
+            background: #333;
+            color: #adacac;
+        }
+
+        .fp-darkMode .list-card-title,
+        .fp-darkMode .list-header-name,
+        .fp-darkMode .badge,
+        .fp-darkMode .badge-icon,
+        .fp-darkMode .open-card-composer,
+        .fp-darkMode .open-card-composer .icon-add,
+        .fp-darkMode .open-card-composer:hover .icon-add {
+            color: #adacac;
+        }
+
+        .fp-darkMode .badge, 
+        .fp-darkMode .badge-icon {
+            color: #717171;
+        }
+
+        .fp-darkMode .fp-divider {
+            color: #adacac
+        }
+
+        .fp-darkMode .fp-divider-dashed {
+            border-color: #717171
+        }
+
+        .fp-darkMode .fp-dividerParent, 
+        .fp-darkMode .fp-dividerParent .list-card-details {
+            background: transparent
+        }
+
+        .fp-darkMode .fp-status-slash,
+        .fp-darkMode .fp-status-content {
+            box-shadow: 0 4px #333;
+        }
+
+        .fp-darkMode .fp-status-slash {
+            background: #555;
+            color: #111;
+        }
+
+        .fp-darkMode .fp-status-content {
+            background: #888;
+            color: #333;
+        }
+
+        .fp-darkMode .open-card-composer:hover {
+            background-color: #444;
+            color: #adacac;
+        }
+
+        .fp-darkMode .list-card-operation {
+          background: #333;
+          color: #adacac;
+        }
+        
+        .fp-darkMode .list-card-operation:hover {
+            background: #111;
+            color: #adacac;
+        }
+        
+        .fp-darkMode .icon-sm.dark-hover:hover {
+            color: #adacac;
+        }
+
+        .fp-darkMode .window {
+            background-color: #444;
+        }
+        
+        .fp-darkMode .window, 
+        .fp-darkMode .window *, 
+        .fp-darkMode .window .icon-sm {
+            color: #adacac;
+        }
+        
+        .fp-darkMode .window .button,
+        .fp-darkMode .window .button-link {
+            background: #333;
+        }
+        
+        .fp-darkMode .checklist-item-checkbox {
+            background: #333;
+            border-color: #111;
+            box-shadow: none;
+        }
+        
+        .fp-darkMode .checklist-item-checkbox:hover,
+        .fp-darkMode .checklist-item-state-complete .checklist-item-checkbox.enabled:hover .checklist-item-checkbox-check {
+            background: #111;
+            color: #adacac;
+        }
+        
+        .fp-darkMode .window .button:hover,
+        .fp-darkMode .window .button-link:hover {
+            background: #111;
+        }
+        
+        .fp-darkMode .window-module-title h3,
+        .fp-darkMode .mod-card-back-title,
+        .fp-darkMode .label-text {
+            color: #fff;
+        }
+        
+        .fp-darkMode .action-comment,
+        .fp-darkMode .attachment-thumbnail-preview {
+            background-color: #333;
+        }
+
+        .fp-darkMode .attachment-thumbnail:hover .attachment-thumbnail-details {
+            background: #555;
+        }
+    </style>
+    `);
   }
 
   function toggleDarkMode(on) {
@@ -94,155 +238,6 @@
     } else {
       $("body").removeClass("fp-darkMode");
     }
-  }
-
-  function addDarkModeStyles() {
-    $("head").append(`
-    <style type="text/css" id="fp-style-darkmode">
-      .list, 
-      .list-card,
-      .fp-status-slash,
-      .fp-status-content {
-          transition: background-color 0.3s ease-out,
-                      box-shadow 0.3s ease-out;
-      }
-
-      .fp-darkMode .list {
-          background: #333;
-      }
-
-      .fp-darkMode .list-card {
-          background: #444;
-      }
-
-      .fp-darkMode .list-card:hover {
-          background: #444;
-      }
-
-      .fp-darkMode .list-card-details,
-      .fp-darkMode .list-card-details:focus,
-      .fp-darkMode .list-card-details:hover {
-          color: #adacac;
-      }
-
-
-      .fp-darkMode .list-card-edit-title,
-      .fp-darkMode .list-card-edit-title:focus,
-      .fp-darkMode .list-card-edit-title:hover {
-          background: #333;
-          color: #adacac;
-      }
-
-      .fp-darkMode .list-card-title,
-      .fp-darkMode .list-header-name,
-      .fp-darkMode .badge,
-      .fp-darkMode .badge-icon,
-      .fp-darkMode .open-card-composer,
-      .fp-darkMode .open-card-composer .icon-add,
-      .fp-darkMode .open-card-composer:hover .icon-add {
-          color: #adacac;
-      }
-
-      .fp-darkMode .badge, 
-      .fp-darkMode .badge-icon {
-          color: #717171;
-      }
-
-      .fp-darkMode .fp-divider {
-          color: #adacac
-      }
-
-      .fp-darkMode .fp-divider-dashed {
-          border-color: #717171
-      }
-
-      .fp-darkMode .fp-dividerParent, 
-      .fp-darkMode .fp-dividerParent .list-card-details {
-          background: transparent
-      }
-
-      .fp-darkMode .fp-status-slash,
-      .fp-darkMode .fp-status-content {
-          box-shadow: 0 4px #333;
-      }
-
-      .fp-darkMode .fp-status-slash {
-          background: #555;
-          color: #111;
-      }
-
-      .fp-darkMode .fp-status-content {
-          background: #888;
-          color: #333;
-      }
-
-      .fp-darkMode .open-card-composer:hover {
-          background-color: #444;
-          color: #adacac;
-      }
-
-      .fp-darkMode .list-card-operation {
-        background: #333;
-        color: #adacac;
-      }
-      
-      .fp-darkMode .list-card-operation:hover {
-          background: #111;
-          color: #adacac;
-      }
-      
-      .fp-darkMode .icon-sm.dark-hover:hover {
-          color: #adacac;
-      }
-
-      .fp-darkMode .window {
-          background-color: #444;
-      }
-      
-      .fp-darkMode .window, 
-      .fp-darkMode .window *, 
-      .fp-darkMode .window .icon-sm {
-          color: #adacac;
-      }
-      
-      .fp-darkMode .window .button,
-      .fp-darkMode .window .button-link {
-          background: #333;
-      }
-      
-      .fp-darkMode .checklist-item-checkbox {
-          background: #333;
-          border-color: #111;
-          box-shadow: none;
-      }
-      
-      .fp-darkMode .checklist-item-checkbox:hover,
-      .fp-darkMode .checklist-item-state-complete .checklist-item-checkbox.enabled:hover .checklist-item-checkbox-check {
-          background: #111;
-          color: #adacac;
-      }
-      
-      .fp-darkMode .window .button:hover,
-      .fp-darkMode .window .button-link:hover {
-          background: #111;
-      }
-      
-      .fp-darkMode .window-module-title h3,
-      .fp-darkMode .mod-card-back-title,
-      .fp-darkMode .label-text {
-          color: #fff;
-      }
-      
-      .fp-darkMode .action-comment,
-      .fp-darkMode .attachment-thumbnail-preview {
-          background-color: #333;
-      }
-
-      .fp-darkMode .attachment-thumbnail:hover .attachment-thumbnail-details {
-          background: #555;
-      }
-    </style>
-  `);
   }
 
   function addDarkModeButton() {
@@ -358,7 +353,6 @@
   }
 
   addStyles();
-  addDarkModeStyles();
 
   const tryInitialiseCards = setInterval(() => {
     const cards = $(".js-list-content");
