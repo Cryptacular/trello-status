@@ -3,7 +3,8 @@
     divider: new RegExp(/^-{3}.+-{3}$/),
     colour: new RegExp(
       /((rgb\((\d+,\s*){2}\d+\))|(rgba\((\d+,\s*){3}[\d.]+\))|(#\S{3,6}))\s*$/
-    )
+    ),
+    tag: new RegExp(/\[.+\]/)
   };
 
   let isDarkModeEnabled = false;
@@ -25,6 +26,8 @@
       ) {
         resetCardStyles(c);
       }
+
+      decorateTags(c);
     });
   }
 
@@ -83,6 +86,13 @@
       .fp-dividerParent {
         background-color: transparent;
         box-shadow: none;
+      }
+
+      .fp-tag {
+        background: #eeeff2;
+        border-radius: 4px;
+        padding: 0px 8px 1px;
+        box-shadow: 0 3px #bdc1cb;
       }
 
       /* Dark Mode */
@@ -228,6 +238,12 @@
         .fp-darkMode .attachment-thumbnail:hover .attachment-thumbnail-details {
             background: #555;
         }
+
+        .fp-darkMode .fp-tag {
+            background: #888;
+            box-shadow: 0 3px #333;
+            color: #333;
+        }
     </style>
     `);
   }
@@ -241,11 +257,17 @@
   }
 
   function addDarkModeButton() {
-    $(".board-header-plugin-btns").append(`
-    <span class="board-header-btn" id="fp-darkModeBtn">
-      <span class="board-header-btn-icon icon-sm icon-lightbulb-lit recolorable"></span>
-      <span class="board-header-btn-text u-text-underline">Dark Mode</span>
-    </span>
+    $(".board-menu-navigation")
+      .first()
+      .find(".board-menu-navigation-item")
+      .last().before(`
+        <li class="board-menu-navigation-item">
+          <a class="board-menu-navigation-item-link" href="#" id="fp-darkModeBtn">
+            <span class="board-menu-navigation-item-link-icon icon-lg icon-lightbulb-lit"></span>
+            &nbsp;
+            Dark Mode
+          </a>
+        </li>
   `);
 
     $("#fp-darkModeBtn").click(function() {
@@ -253,8 +275,9 @@
       toggleDarkMode(isDarkModeEnabled);
       chrome.storage.local.set({ isDarkModeEnabled: isDarkModeEnabled });
     });
+  }
 
-    // Unhide plugin buttons container if required
+  function showPluginButtons() {
     $(".board-header-plugin-btns.hide").removeClass("hide");
   }
 
@@ -315,6 +338,24 @@
     }
   }
 
+  function decorateTags(card) {
+    let contents = card.innerHTML;
+
+    if (contents.indexOf("fp-tag") > -1 || contents.indexOf("[") === -1) {
+      return;
+    }
+
+    const tags = regex.tag.exec(contents);
+    tags.forEach(t => {
+      contents = contents.replace(
+        t,
+        `<span class="fp-tag">${t.substr(1, t.length - 2)}</span>`
+      );
+    });
+
+    card.innerHTML = contents;
+  }
+
   function decorateDivider(element) {
     if (element.innerHTML.indexOf("fp-divider") > -1) {
       return;
@@ -373,7 +414,7 @@
   }, 100);
 
   const tryInitialiseDarkModeButton = setInterval(() => {
-    const buttonsContainer = $(".board-header-plugin-btns");
+    const buttonsContainer = $(".board-menu-navigation");
     if (buttonsContainer && buttonsContainer.length > 0) {
       addDarkModeButton();
       clearInterval(tryInitialiseDarkModeButton);
