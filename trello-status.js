@@ -97,153 +97,157 @@
 
       /* Dark Mode */
       .list, 
-        .list-card,
-        .fp-status-slash,
-        .fp-status-content {
-            transition: background-color 0.3s ease-out,
-                        box-shadow 0.3s ease-out;
-        }
+      .list-card,
+      .fp-status-slash,
+      .fp-status-content {
+          transition: background-color 0.3s ease-out,
+                      box-shadow 0.3s ease-out;
+      }
 
-        .fp-darkMode .list {
-            background: #333;
-        }
+      .fp-darkMode .list {
+          background: #333;
+      }
 
-        .fp-darkMode .list-card {
-            background: #444;
-        }
+      .fp-darkMode .list-card {
+          background: #444;
+      }
 
-        .fp-darkMode .list-card:hover {
-            background: #444;
-        }
+      .fp-darkMode .list-card:hover {
+          background: #444;
+      }
 
-        .fp-darkMode .list-card-details,
-        .fp-darkMode .list-card-details:focus,
-        .fp-darkMode .list-card-details:hover {
-            color: #adacac;
-        }
+      .fp-darkMode .list-card-details,
+      .fp-darkMode .list-card-details:focus,
+      .fp-darkMode .list-card-details:hover {
+          color: #adacac;
+      }
 
 
-        .fp-darkMode .list-card-edit-title,
-        .fp-darkMode .list-card-edit-title:focus,
-        .fp-darkMode .list-card-edit-title:hover {
-            background: #333;
-            color: #adacac;
-        }
-
-        .fp-darkMode .list-card-title,
-        .fp-darkMode .list-header-name,
-        .fp-darkMode .badge,
-        .fp-darkMode .badge-icon,
-        .fp-darkMode .open-card-composer,
-        .fp-darkMode .open-card-composer .icon-add,
-        .fp-darkMode .open-card-composer:hover .icon-add {
-            color: #adacac;
-        }
-
-        .fp-darkMode .badge, 
-        .fp-darkMode .badge-icon {
-            color: #717171;
-        }
-
-        .fp-darkMode .fp-divider {
-            color: #adacac
-        }
-
-        .fp-darkMode .fp-divider-dashed {
-            border-color: #717171
-        }
-
-        .fp-darkMode .fp-dividerParent, 
-        .fp-darkMode .fp-dividerParent .list-card-details {
-            background: transparent
-        }
-
-        .fp-darkMode .fp-status-slash,
-        .fp-darkMode .fp-status-content {
-            box-shadow: 0 4px #333;
-        }
-
-        .fp-darkMode .fp-status-slash {
-            background: #555;
-            color: #111;
-        }
-
-        .fp-darkMode .fp-status-content {
-            background: #888;
-            color: #333;
-        }
-
-        .fp-darkMode .open-card-composer:hover {
-            background-color: #444;
-            color: #adacac;
-        }
-
-        .fp-darkMode .list-card-operation {
+      .fp-darkMode .list-card-edit-title,
+      .fp-darkMode .list-card-edit-title:focus,
+      .fp-darkMode .list-card-edit-title:hover {
           background: #333;
           color: #adacac;
-        }
-        
-        .fp-darkMode .list-card-operation:hover {
-            background: #111;
-            color: #adacac;
-        }
-        
-        .fp-darkMode .icon-sm.dark-hover:hover {
-            color: #adacac;
-        }
+      }
 
-        .fp-darkMode .window {
-            background-color: #444;
-        }
-        
-        .fp-darkMode .window, 
-        .fp-darkMode .window *, 
-        .fp-darkMode .window .icon-sm {
-            color: #adacac;
-        }
-        
-        .fp-darkMode .window .button,
-        .fp-darkMode .window .button-link {
-            background: #333;
-        }
-        
-        .fp-darkMode .checklist-item-checkbox {
-            background: #333;
-            border-color: #111;
-            box-shadow: none;
-        }
-        
-        .fp-darkMode .checklist-item-checkbox:hover,
-        .fp-darkMode .checklist-item-state-complete .checklist-item-checkbox.enabled:hover .checklist-item-checkbox-check {
-            background: #111;
-            color: #adacac;
-        }
-        
-        .fp-darkMode .window .button:hover,
-        .fp-darkMode .window .button-link:hover {
-            background: #111;
-        }
-        
-        .fp-darkMode .window-module-title h3,
-        .fp-darkMode .mod-card-back-title,
-        .fp-darkMode .label-text {
-            color: #fff;
-        }
-        
-        .fp-darkMode .action-comment,
-        .fp-darkMode .attachment-thumbnail-preview {
-            background-color: #333;
-        }
+      .fp-darkMode .list-card-title,
+      .fp-darkMode .list-header-name,
+      .fp-darkMode .badge,
+      .fp-darkMode .badge-icon,
+      .fp-darkMode .open-card-composer,
+      .fp-darkMode .open-card-composer .icon-add,
+      .fp-darkMode .open-card-composer:hover .icon-add {
+          color: #adacac;
+      }
 
-        .fp-darkMode .attachment-thumbnail:hover .attachment-thumbnail-details {
-            background: #555;
-        }
+      .fp-darkMode .badge, 
+      .fp-darkMode .badge-icon {
+          color: #717171;
+      }
 
-        .fp-darkMode .fp-tag {
-            background: #888;
-            box-shadow: 0 3px #333;
-            color: #333;
-        }
+      .fp-darkMode .fp-divider {
+          color: #adacac
+      }
+
+      .fp-darkMode .fp-divider-dashed {
+          border-color: #717171
+      }
+
+      .fp-darkMode .fp-dividerParent, 
+      .fp-darkMode .fp-dividerParent .list-card-details {
+          background: transparent
+      }
+
+      .fp-darkMode .fp-status-slash,
+      .fp-darkMode .fp-status-content {
+          box-shadow: 0 4px #333;
+      }
+
+      .fp-darkMode .fp-status-slash {
+          background: #555;
+          color: #111;
+      }
+
+      .fp-darkMode .fp-status-content {
+          background: #888;
+          color: #333;
+      }
+
+      .fp-darkMode .open-card-composer:hover {
+          background-color: #444;
+          color: #adacac;
+      }
+
+      .fp-darkMode .list-card-operation {
+        background: #333;
+        color: #adacac;
+      }
+      
+      .fp-darkMode .list-card-operation:hover {
+          background: #111;
+          color: #adacac;
+      }
+      
+      .fp-darkMode .icon-sm.dark-hover:hover {
+          color: #adacac;
+      }
+
+      .fp-darkMode .window {
+          background-color: #444;
+      }
+      
+      .fp-darkMode .window, 
+      .fp-darkMode .window *, 
+      .fp-darkMode .window .icon-sm {
+          color: #adacac;
+      }
+      
+      .fp-darkMode .window .button,
+      .fp-darkMode .window .button-link {
+          background: #333;
+      }
+      
+      .fp-darkMode .checklist-item-checkbox {
+          background: #333;
+          border-color: #111;
+          box-shadow: none;
+      }
+      
+      .fp-darkMode .checklist-item-checkbox:hover,
+      .fp-darkMode .checklist-item-state-complete .checklist-item-checkbox.enabled:hover .checklist-item-checkbox-check {
+          background: #111;
+          color: #adacac;
+      }
+      
+      .fp-darkMode .window .button:hover,
+      .fp-darkMode .window .button-link:hover {
+          background: #111;
+      }
+      
+      .fp-darkMode .window-module-title h3,
+      .fp-darkMode .mod-card-back-title,
+      .fp-darkMode .label-text {
+          color: #fff;
+      }
+      
+      .fp-darkMode .action-comment,
+      .fp-darkMode .attachment-thumbnail-preview {
+          background-color: #333;
+      }
+
+      .fp-darkMode .attachment-thumbnail:hover .attachment-thumbnail-details {
+          background: #555;
+      }
+
+      .fp-darkMode .fp-tag {
+          background: #888;
+          box-shadow: 0 3px #333;
+          color: #333;
+      }
+
+      .fp-darkMode textarea.is-editing {
+          background: #333;
+      }
     </style>
     `);
   }
@@ -260,7 +264,7 @@
     $(".board-menu-navigation")
       .first()
       .find(".board-menu-navigation-item")
-      .last().before(`
+      .first().before(`
         <li class="board-menu-navigation-item">
           <a class="board-menu-navigation-item-link" href="#" id="fp-darkModeBtn">
             <span class="board-menu-navigation-item-link-icon icon-lg icon-lightbulb-lit"></span>
@@ -395,29 +399,67 @@
 
   addStyles();
 
-  const tryInitialiseCards = setInterval(() => {
-    const cards = $(".js-list-content");
-    if (cards && cards.length > 0) {
-      decorateCards();
-      cards.bind("DOMSubtreeModified", decorateCards);
-      clearInterval(tryInitialiseCards);
-    }
-  }, 100);
+  let currentIntervals = [];
 
-  const tryInitialiseLists = setInterval(() => {
-    const lists = $(".js-list-header");
-    if (lists && lists.length > 0) {
-      decorateLists();
-      lists.bind("DOMSubtreeModified", decorateLists);
-      clearInterval(tryInitialiseLists);
-    }
-  }, 100);
+  const initialise = function() {
+    currentIntervals.forEach(i => clearInterval(i));
+    currentIntervals = [];
 
-  const tryInitialiseDarkModeButton = setInterval(() => {
-    const buttonsContainer = $(".board-menu-navigation");
-    if (buttonsContainer && buttonsContainer.length > 0) {
-      addDarkModeButton();
-      clearInterval(tryInitialiseDarkModeButton);
+    const tryInitialiseCards = setInterval(() => {
+      const cards = $(".js-list-content");
+      if (cards && cards.length > 0) {
+        decorateCards();
+        cards.bind("DOMSubtreeModified", decorateCards);
+        clearInterval(tryInitialiseCards);
+      }
+    }, 100);
+
+    const tryInitialiseLists = setInterval(() => {
+      const lists = $(".js-list-header");
+      if (lists && lists.length > 0) {
+        decorateLists();
+        lists.bind("DOMSubtreeModified", decorateLists);
+        clearInterval(tryInitialiseLists);
+      }
+    }, 100);
+
+    const tryInitialiseButton = setInterval(() => {
+      const buttonsContainer = $(".board-menu-navigation");
+      const button = $("#fp-darkModeBtn");
+      if (buttonsContainer && buttonsContainer.length > 0) {
+        if (button.length === 0) {
+          addDarkModeButton();
+        } else {
+          clearInterval(tryInitialiseButton);
+        }
+      }
+    }, 2000);
+
+    currentIntervals = [
+      ...currentIntervals,
+      tryInitialiseCards,
+      tryInitialiseLists,
+      tryInitialiseButton
+    ];
+  };
+
+  const callback = function(mutationsList, observer) {
+    for (let mutation of mutationsList) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        initialise();
+      }
     }
-  }, 100);
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(document.getElementById("header"), {
+    attributes: true,
+    childList: false,
+    subtree: false
+  });
+
+  initialise();
 })();
